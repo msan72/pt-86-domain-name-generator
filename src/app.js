@@ -1,11 +1,40 @@
-import "bootstrap";
-import "./style.css";
+// Arrays base
+let pronoun = ['the', 'our'];
+let adj = ['great', 'big'];
+let noun = ['jogger', 'racoon', 'us'];
+let extensions = ['.com', '.net', '.us', '.io'];
 
+// Domain Generate
+function generateDomains() {
+  let domains = [];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+  for (let p of pronoun) {
+    for (let a of adj) {
+      for (let n of noun) {
+        for (let ext of extensions) {
+          domains.push(p + a + n + ext);
 
+          // domain hack
+          if (n.endsWith(ext.slice(1))) {
+            let hacked = p + a + n.slice(0, -ext.length + 1) + ext;
+            domains.push(hacked);
+          }
+        }
+      }
+    }
+  }
+
+  return domains;
+}
+
+// Insert HTML
 window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+  let domainList = document.getElementById("domain-list");
+  let domains = generateDomains();
+
+  domains.forEach(domain => {
+    let li = document.createElement("li");
+    li.textContent = domain;
+    domainList.appendChild(li);
+  });
 };
