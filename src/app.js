@@ -4,7 +4,7 @@ let adj = ['great', 'big'];
 let noun = ['jogger', 'racoon', 'us'];
 let extensions = ['.com', '.net', '.us', '.io'];
 
-// Domain Generate
+// Domain generate
 function generateDomains() {
   let domains = [];
 
